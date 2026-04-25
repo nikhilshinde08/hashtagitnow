@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'hashtagitnow.vercel.app' }],
+        destination: 'https://hashtagitnow.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
