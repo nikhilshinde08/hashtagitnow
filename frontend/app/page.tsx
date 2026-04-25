@@ -268,6 +268,45 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── TRENDING + GUIDES STRIP ──────────────────────────── */}
+      <section className="bg-[#F0C020] border-b-4 border-[#121212] p-8 lg:p-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          {/* Trending */}
+          <Link
+            href="/trending"
+            className="group bg-[#121212] border-2 border-[#121212] shadow-[6px_6px_0px_0px_#D02020] p-8 flex items-center justify-between hover:shadow-[8px_8px_0px_0px_#D02020] transition-all"
+          >
+            <div>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-2 py-1 border-2 border-[#D02020] text-[#D02020] mb-3">Live Now</span>
+              <p className="font-black text-2xl uppercase tracking-tighter text-white leading-tight">
+                See What&apos;s<br />
+                <span className="text-[#F0C020]">Trending</span>
+              </p>
+              <p className="text-white/50 font-medium text-sm mt-2">Real-time hashtags for your niche →</p>
+            </div>
+            <span className="font-black text-5xl text-[#D02020] group-hover:translate-x-2 transition-transform">↑</span>
+          </Link>
+
+          {/* Hashtag Guides */}
+          <Link
+            href="/hashtags"
+            className="group bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-8 flex items-center justify-between hover:shadow-[8px_8px_0px_0px_#121212] transition-all"
+          >
+            <div>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-2 py-1 border-2 border-[#121212] text-[#121212] mb-3">35 Free Guides</span>
+              <p className="font-black text-2xl uppercase tracking-tighter text-[#121212] leading-tight">
+                Hashtag Guides<br />
+                <span className="text-[#1040C0]">By Niche</span>
+              </p>
+              <p className="text-[#121212]/50 font-medium text-sm mt-2">Fitness, food, travel, Hindi creators →</p>
+            </div>
+            <span className="font-black text-5xl text-[#1040C0] group-hover:translate-x-2 transition-transform">#</span>
+          </Link>
+
+        </div>
+      </section>
+
       {/* ── AI CAPABILITIES ──────────────────────────────────── */}
       <section className="bg-[#D02020] border-b-4 border-[#121212] p-8 lg:p-16">
         <div className="max-w-7xl mx-auto">

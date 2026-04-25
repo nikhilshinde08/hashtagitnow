@@ -57,6 +57,7 @@ export default function Nav() {
                 <Link href="/analyze" className={linkClass('/analyze')}>Analyse</Link>
                 <Link href="/compare" className={linkClass('/compare')}>Compare</Link>
                 <Link href="/trending" className={linkClass('/trending')}>Trending</Link>
+                <Link href="/hashtags" className={linkClass('/hashtags')}>Guides</Link>
                 {user ? (
                   <button
                     onClick={handleSignOut}
@@ -97,6 +98,7 @@ export default function Nav() {
             <Link href="/analyze" className={linkClass('/analyze')} onClick={() => setOpen(false)}>Analyse</Link>
             <Link href="/compare" className={linkClass('/compare')} onClick={() => setOpen(false)}>Compare</Link>
             <Link href="/trending" className={linkClass('/trending')} onClick={() => setOpen(false)}>Trending</Link>
+            <Link href="/hashtags" className={linkClass('/hashtags')} onClick={() => setOpen(false)}>Guides</Link>
             {user ? (
               <button onClick={handleSignOut} className="text-sm font-bold tracking-widest uppercase px-4 py-2 border-2 border-[#121212] bg-[#D02020] text-white text-left">Sign Out</button>
             ) : (
