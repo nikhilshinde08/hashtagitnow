@@ -6,6 +6,8 @@ export const rateLimiter = rateLimit({
   max: config.rateLimit.max,
   standardHeaders: true,
   legacyHeaders: false,
+  // trust proxy is set on the Express app — suppress redundant validation warning
+  validate: { trustProxy: false },
   message: {
     error: 'Too many requests. Please wait before trying again.',
     retryAfterMs: config.rateLimit.windowMs,
