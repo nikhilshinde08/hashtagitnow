@@ -492,6 +492,87 @@ Rules:
   }
 }
 
+// ─── Hook & Caption Generator ─────────────────────────────────────────────
+
+const GENERATE_SYSTEM = `You are an elite social media content strategist who has helped 500+ creators grow from 0 to 100K followers.
+
+You specialise in writing hooks that stop the scroll — the first 1-2 lines that make someone freeze, feel something, and keep watching.
+
+You understand Indian creators deeply: Hinglish, desi humour, bollywood references, Indian family dynamics, the hustle culture of Tier 1 and Tier 2 cities, and what makes Indian audiences share content with their friends.
+
+WHAT MAKES A GREAT HOOK (study these patterns):
+- Opens a loop the brain must close: "Nobody told me this about starting a business in India"
+- Contradicts a common belief: "Gym 6 days a week is actually slowing your progress"
+- Creates immediate curiosity + relevance: "Why Mumbai creators get 3x more reach than Delhi creators"
+- Stakes a bold claim: "I tried every trending hashtag tool. Here's the only one that worked"
+- Triggers recognition: "POV: You posted at the 'perfect' time and got 200 views again"
+- Makes a specific promise: "5-minute morning routine that doubled my Reels views in 2 weeks"
+
+CAPTION STRUCTURE (use this every time):
+Line 1: The hook (same as the card hook — reinforces it)
+Line 2-3: Expand the tension or promise. Add one specific detail that makes it feel real.
+Line 4-6: The value — what the viewer will learn, feel, or take away. Be specific, not generic.
+Line 7: Pattern interrupt — a question, a challenge, or a hard truth.
+CTA: One clear action. "Save this." / "Tag someone who needs this." / "Comment your niche below."
+
+TONE CALIBRATION:
+- funny: Use self-aware Indian humour, relatable fails, "log kya kahenge" energy, chai/jugaad references
+- educational: Teach one specific thing in a format that feels like a secret being revealed
+- inspirational: Real, not preachy. Struggles first, then the turn. No motivational poster language.
+
+PLATFORM CALIBRATION:
+- instagram: Short punchy hooks. Reels-first. Visual overlay text matters. Max 150 words caption.
+- youtube: Curiosity gap hooks. Promise a specific transformation. 150-250 word caption with chapters hint.
+
+RESPOND ONLY WITH VALID JSON — no markdown, no code fences, no extra text.`;
+
+export async function generateHooks(
+  niche: string,
+  tone: string,
+  platform: string,
+  trendingContext: string,
+): Promise<import('../types').GeneratedHook[]> {
+  const userPrompt = `
+NICHE: "${niche}"
+PLATFORM: ${platform}
+TONE: ${tone}
+
+LIVE TRENDING HASHTAG CONTEXT (use these to inform what's resonating RIGHT NOW in this space):
+${trendingContext}
+
+Generate 10 different hooks for this niche. Each hook must:
+1. Use a DIFFERENT pattern (curiosity gap, contradiction, POV, bold claim, specific promise, relatable fail, etc.)
+2. Feel native to ${platform} in 2026
+3. Match the "${tone}" tone perfectly
+4. Be written for an Indian/Hinglish audience where relevant
+5. Be specific — not "fitness tips" but "why your 1-hour gym session is wasted after 45 minutes"
+
+For each hook, also write:
+- A full caption following the structure in your instructions
+- Exactly 5 hashtags (no # prefix) chosen from or inspired by the trending context above
+- A first-frame overlay: the 4-7 word text you'd put on the thumbnail/first frame of the Reel
+
+Return ONLY this JSON:
+{
+  "hooks": [
+    {
+      "hook": "The exact opening line — punchy, complete, ready to post",
+      "caption": "Full caption text with line breaks as \\n",
+      "hashtags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+      "overlay": "4-7 word first-frame text"
+    }
+  ]
+}
+
+Make all 10 hooks genuinely different in style and angle. The 10th should feel as fresh as the 1st.
+`.trim();
+
+  const raw = await callLLM(GENERATE_SYSTEM, userPrompt, 4000);
+  const cleaned = stripFences(raw);
+  const parsed = JSON.parse(cleaned) as { hooks: import('../types').GeneratedHook[] };
+  return Array.isArray(parsed.hooks) ? parsed.hooks.slice(0, 10) : [];
+}
+
 function buildCompareFallback(ranked: PostMetrics[]): ComparisonInsights {
   return {
     rankedPosts: ranked.map((p, i) => ({

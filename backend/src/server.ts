@@ -5,6 +5,7 @@ import { config } from './config/env';
 import analyzeRouter from './routes/analyze.route';
 import compareRouter from './routes/compare.route';
 import trendingRouter from './routes/trending.route';
+import generateRouter from './routes/generate.route';
 import { rateLimiter } from './middleware/rateLimiter';
 import { errorHandler, notFound } from './middleware/errorHandler';
 
@@ -58,6 +59,7 @@ app.get('/health', (_req, res) => {
 app.use('/analyze', analyzeRouter);
 app.use('/compare', compareRouter);
 app.use('/trending', trendingRouter);
+app.use('/generate', generateRouter);
 
 // ─── 404 + error handlers (must be last) ─────────────────────────────────
 app.use(notFound);

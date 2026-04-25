@@ -56,6 +56,7 @@ export default function Nav() {
               <div className="hidden md:flex items-center gap-3">
                 <Link href="/analyze" className={linkClass('/analyze')}>Analyse</Link>
                 <Link href="/compare" className={linkClass('/compare')}>Compare</Link>
+                <Link href="/generate" className={linkClass('/generate')}>Generate</Link>
                 <Link href="/trending" className={linkClass('/trending')}>Trending</Link>
                 <Link href="/hashtags" className={linkClass('/hashtags')}>Guides</Link>
                 {user ? (
@@ -97,6 +98,7 @@ export default function Nav() {
           <div className="md:hidden border-t-4 border-[#121212] py-4 flex flex-col gap-3">
             <Link href="/analyze" className={linkClass('/analyze')} onClick={() => setOpen(false)}>Analyse</Link>
             <Link href="/compare" className={linkClass('/compare')} onClick={() => setOpen(false)}>Compare</Link>
+            <Link href="/generate" className={linkClass('/generate')} onClick={() => setOpen(false)}>Generate</Link>
             <Link href="/trending" className={linkClass('/trending')} onClick={() => setOpen(false)}>Trending</Link>
             <Link href="/hashtags" className={linkClass('/hashtags')} onClick={() => setOpen(false)}>Guides</Link>
             {user ? (

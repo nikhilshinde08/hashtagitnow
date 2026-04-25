@@ -176,3 +176,28 @@ export interface CompareResponse {
 export interface AppError extends Error {
   statusCode: number;
 }
+
+// ─── Generate feature ─────────────────────────────────────────────────────
+
+export type GenerateTone = 'funny' | 'educational' | 'inspirational';
+export type GeneratePlatform = 'instagram' | 'youtube';
+
+export interface GenerateRequest {
+  niche: string;
+  tone?: GenerateTone;
+  platform?: GeneratePlatform;
+}
+
+export interface GeneratedHook {
+  hook: string;
+  caption: string;
+  hashtags: string[];
+  overlay: string;
+}
+
+export interface GenerateResponse {
+  niche: string;
+  tone: GenerateTone;
+  platform: GeneratePlatform;
+  hooks: GeneratedHook[];
+}
