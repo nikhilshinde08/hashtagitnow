@@ -10,6 +10,9 @@ import { errorHandler, notFound } from './middleware/errorHandler';
 
 const app = express();
 
+// Trust Railway/Vercel proxy so rate-limiter can read the real client IP
+app.set('trust proxy', 1);
+
 // ─── Security headers ─────────────────────────────────────────────────────
 app.use(helmet());
 
@@ -21,8 +24,8 @@ const allowedOrigins = [
 
 function isAllowedOrigin(origin: string): boolean {
   if (allowedOrigins.includes(origin)) return true;
-  // Accept any Vercel preview/production deployment for this project
-  if (/^https:\/\/[a-z0-9-]+-[a-z0-9-]+\.vercel\.app$/.test(origin)) return true;
+  // Accept any *.vercel.app deployment
+  if (/^https:\/\/[a-z0-9][a-z0-9-]*\.vercel\.app$/.test(origin)) return true;
   return false;
 }
 
