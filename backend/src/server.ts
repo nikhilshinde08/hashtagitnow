@@ -19,10 +19,16 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
 ].filter(Boolean) as string[];
 
+function isAllowedOrigin(origin: string): boolean {
+  if (allowedOrigins.includes(origin)) return true;
+  // Accept any Vercel preview/production deployment for this project
+  if (/^https:\/\/[a-z0-9-]+-[a-z0-9-]+\.vercel\.app$/.test(origin)) return true;
+  return false;
+}
+
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow requests with no origin (curl, Postman, server-to-server)
-    if (!origin || allowedOrigins.some((o) => origin === o)) {
+    if (!origin || isAllowedOrigin(origin)) {
       cb(null, true);
     } else {
       cb(new Error(`CORS blocked: ${origin}`));

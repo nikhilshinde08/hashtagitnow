@@ -84,8 +84,8 @@ export default function TrendingPage() {
       } else {
         setResult(data);
       }
-    } catch {
-      setError('Could not reach the backend. Make sure it is running on port 4000.');
+    } catch (err) {
+      setError(`Network error: ${err instanceof Error ? err.message : String(err)}`);
     } finally {
       setLoading(false);
     }
