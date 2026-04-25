@@ -48,13 +48,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="bg-[#F0F0F0] font-outfit min-h-screen flex flex-col">
-        <Script
-          id="keep-alive"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `setInterval(()=>fetch('${process.env.NEXT_PUBLIC_API_URL}/health').catch(()=>{}), 600000)`,
-          }}
-        />
+        {process.env.NEXT_PUBLIC_API_URL && (
+          <Script
+            id="keep-alive"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `setInterval(()=>fetch('${process.env.NEXT_PUBLIC_API_URL}/health').catch(()=>{}), 600000)`,
+            }}
+          />
+        )}
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT && (
           <Script
             async
