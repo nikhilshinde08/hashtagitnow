@@ -4,7 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import Nav from './Nav';
 
-const BASE_URL = 'https://hashtagitnow.vercel.app';
+const BASE_URL = 'https://hashtagitnow.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -65,6 +65,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'HashtagItNow',
+              applicationCategory: 'SocialNetworkingApplication',
+              operatingSystem: 'Web',
+              url: 'https://hashtagitnow.com',
+              description: 'AI-powered hashtag generator and strategy tool for Instagram, YouTube, TikTok and Indian creators.',
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+              author: { '@type': 'Organization', name: 'AIGenixs Labs' },
+            }),
+          }}
+        />
         <Nav />
         <div className="flex-1">{children}</div>
         <footer className="bg-[#121212] border-t-4 border-[#121212]">
