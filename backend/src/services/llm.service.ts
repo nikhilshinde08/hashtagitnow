@@ -60,6 +60,9 @@ Your job is to:
 3. Audit the existing hashtags: are they relevant, effective, too generic, or missing the mark?
 4. Recommend an optimised hashtag set tailored to this specific post
 
+CRITICAL INSTAGRAM RULE: Instagram now only allows up to 5 hashtags for effective reach. Using more than 5 hashtags
+does NOT increase visibility and can hurt performance. Always recommend exactly 3–5 highly targeted hashtags — never more.
+
 MULTILINGUAL SUPPORT: The creator's niche description may be in any language — Hindi, Hinglish, English, or mixed.
 Understand the niche accurately regardless of language. All recommended hashtags must be in English
 (as English hashtags have global reach on Instagram) unless the niche is explicitly region-specific.
@@ -143,7 +146,7 @@ INSTRUCTIONS:
 1. Detect the true niche/topic of this post from its caption — do NOT assume from the reference list
 2. Audit each currently used hashtag: is it effective for THIS post specifically?
 3. Identify hashtags that are too generic, irrelevant, or missing
-4. Recommend 20-30 total hashtags across three tiers, tailored to this post's actual content
+4. Recommend EXACTLY 3–5 total hashtags across tiers — Instagram only allows 5 hashtags for optimal reach, using more hurts performance
 
 Return this exact JSON shape:
 {
@@ -162,9 +165,9 @@ Return this exact JSON shape:
     "missing":     ["important", "tags", "absent", "from", "post"]
   },
   "recommendedHashtags": {
-    "highReach":      ["5-8 high volume tags — no #"],
-    "niche":          ["8-12 targeted tags specific to this post's topic"],
-    "lowCompetition": ["6-10 long-tail tags for this specific post"]
+    "highReach":      ["1-2 high volume tags — no #"],
+    "niche":          ["1-2 targeted tags specific to this post's topic"],
+    "lowCompetition": ["1-2 long-tail tags for this specific post"]
   },
   "analysis": {
     "issues":      ["specific problem with the current hashtag set"],
@@ -177,6 +180,7 @@ Rules:
 - All tags lowercase, no '#' prefix in arrays
 - hashtagAudit must only reference tags that were actually in the current hashtag list
 - recommendedHashtags must reflect the actual content of THIS post, not generic tags
+- Total tags across all recommendedHashtags tiers must be 3–5 — never exceed 5
 `.trim();
 
   let raw: string;
@@ -287,6 +291,9 @@ function sanitiseTags(tags: unknown): string[] {
 const COMPARE_SYSTEM_PROMPT = `You are an expert Instagram analytics strategist.
 You will receive data from multiple Instagram posts — their captions, hashtags, and engagement metrics.
 Your job is to compare them, find patterns in what drives views and engagement, and give actionable recommendations.
+
+CRITICAL INSTAGRAM RULE: Instagram only allows up to 5 hashtags for effective reach. All recommendations must stay within this limit — never suggest more than 5 hashtags for any post.
+
 Respond ONLY with valid JSON — no markdown, no code fences, no extra text.`;
 
 export async function comparePostsStrategy(posts: PostMetrics[]): Promise<ComparisonInsights> {
