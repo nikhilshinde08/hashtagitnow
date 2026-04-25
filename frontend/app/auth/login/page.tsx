@@ -21,6 +21,7 @@ function LoginForm() {
     setLoading(true);
     setError('');
     const supabase = createClient();
+    if (!supabase) { setError('Auth not configured.'); setLoading(false); return; }
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setError(error.message);
