@@ -60,7 +60,7 @@ export default function PricingPage() {
     setError('');
 
     const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const user = supabase ? (await supabase.auth.getUser()).data.user : null;
 
     if (!user) {
       router.push('/auth/signup');
