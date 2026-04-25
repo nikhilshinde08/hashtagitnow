@@ -1,0 +1,37 @@
+{
+  "fitness": {
+    "highReach":       ["fitness", "gym", "workout", "fitnessmotivation", "fit"],
+    "niche":           ["strengthtraining", "hiitworkout", "homegym", "functionalfitness", "crossfit"],
+    "lowCompetition":  ["gymlife2024", "trainhard365", "sweatdaily", "fitfam2024", "grindseason"]
+  },
+  "food": {
+    "highReach":       ["food", "foodie", "instafood", "foodphotography", "yummy"],
+    "niche":           ["mealprep", "cleaneating", "plantbased", "homecooking", "foodstyling"],
+    "lowCompetition":  ["mealprepmadeeasy", "plantbasedfoodlover", "weeknightdinner", "cookingathome2024", "foodiefinds"]
+  },
+  "travel": {
+    "highReach":       ["travel", "wanderlust", "travelgram", "explore", "adventure"],
+    "niche":           ["solotravel", "budgettravel", "digitalnomad", "travelreels", "hiddengems"],
+    "lowCompetition":  ["solobackpacker2024", "hiddengemsdestinations", "budgettraveltips", "offbeattravel", "wanderlust365"]
+  },
+  "fashion": {
+    "highReach":       ["fashion", "style", "ootd", "outfitoftheday", "fashionista"],
+    "niche":           ["streetstyle", "sustainablefashion", "capsulewardrobe", "thriftflip", "slowfashion"],
+    "lowCompetition":  ["capsulewardrobeinspo", "thriftedoutfit2024", "slowfashionmovement", "consciousstyle", "vintageootd"]
+  },
+  "business": {
+    "highReach":       ["entrepreneur", "business", "startup", "marketing", "success"],
+    "niche":           ["solopreneur", "smallbusinessowner", "contentstrategy", "b2bmarketing", "growthhacking"],
+    "lowCompetition":  ["solopreneurlife2024", "smallbizgrowth", "contentstrategytips", "founderjourney", "buildingabrand"]
+  },
+  "beauty": {
+    "highReach":       ["beauty", "makeup", "skincare", "glam", "makeuptutorial"],
+    "niche":           ["skincareRoutine", "cleanbeauty", "glassskin", "acneskincare", "minimalistmakeup"],
+    "lowCompetition":  ["glassskinroutine", "cleanbeautyfinds", "acneproneskincare", "drugstoreskincare2024", "skincarejunkie2024"]
+  },
+  "default": {
+    "highReach":       ["instagood", "photooftheday", "follow", "like4like", "instadaily"],
+    "niche":           ["contentcreator", "socialmediatips", "instagrammarketing", "growyourbrand", "digitalmarketing"],
+    "lowCompetition":  ["contentcreatortips2024", "smallcreatorclub", "instagramgrowth2024", "socialmediagrowth", "reachmore"]
+  }
+}

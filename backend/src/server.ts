@@ -1,0 +1,61 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import { config } from './config/env';
+import analyzeRouter from './routes/analyze.route';
+import compareRouter from './routes/compare.route';
+import trendingRouter from './routes/trending.route';
+import { rateLimiter } from './middleware/rateLimiter';
+import { errorHandler, notFound } from './middleware/errorHandler';
+
+const app = express();
+
+// ─── Security headers ─────────────────────────────────────────────────────
+app.use(helmet());
+
+// ─── Global middleware ────────────────────────────────────────────────────
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.FRONTEND_URL,
+].filter(Boolean) as string[];
+
+app.use(cors({
+  origin: (origin, cb) => {
+    // Allow requests with no origin (curl, Postman, server-to-server)
+    if (!origin || allowedOrigins.some((o) => origin === o)) {
+      cb(null, true);
+    } else {
+      cb(new Error(`CORS blocked: ${origin}`));
+    }
+  },
+  methods: ['GET', 'POST'],
+}));
+app.use(express.json({ limit: '50kb' }));
+app.use(rateLimiter);
+
+// ─── Health check ─────────────────────────────────────────────────────────
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok', ts: new Date().toISOString() });
+});
+
+// ─── Routes ───────────────────────────────────────────────────────────────
+app.use('/analyze', analyzeRouter);
+app.use('/compare', compareRouter);
+app.use('/trending', trendingRouter);
+
+// ─── 404 + error handlers (must be last) ─────────────────────────────────
+app.use(notFound);
+app.use(errorHandler);
+
+// ─── Start ────────────────────────────────────────────────────────────────
+app.listen(config.port, () => {
+  console.log(`[Server] Hashtag Intelligence API running on http://localhost:${config.port}`);
+  console.log(`[Server] POST http://localhost:${config.port}/analyze`);
+  if (!config.llm.foundryApiKey || !config.llm.foundryResource) {
+    console.warn('[Server] WARNING: ANTHROPIC_FOUNDRY_API_KEY or ANTHROPIC_FOUNDRY_RESOURCE not set — LLM enrichment will be skipped.');
+  } else {
+    console.log(`[Server] LLM: Azure AI Foundry (${config.llm.foundryDeployment}) ready.`);
+  }
+});
+
+export default app;

@@ -1,0 +1,467 @@
+import Link from 'next/link';
+
+function GeoDot({ color }: { color: string }) {
+  return <div className={`w-3 h-3 rounded-full ${color} border-2 border-[#121212]`} />;
+}
+
+export default function LandingPage() {
+  return (
+    <main>
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="border-b-4 border-[#121212] grid grid-cols-1 lg:grid-cols-5 min-h-[600px]">
+        {/* Left */}
+        <div className="lg:col-span-3 bg-[#F0F0F0] p-8 lg:p-16 flex flex-col justify-center">
+          <div className="inline-flex items-center gap-2 mb-8 w-fit">
+            <GeoDot color="bg-[#D02020]" />
+            <GeoDot color="bg-[#1040C0]" />
+            <div className="w-3 h-3 bg-[#F0C020] border-0" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
+            <span className="text-xs font-black uppercase tracking-widest text-[#121212] ml-1 border-2 border-[#121212] px-3 py-1 shadow-[2px_2px_0px_0px_#121212]">
+              AI-Powered
+            </span>
+          </div>
+
+          <h1 className="font-black uppercase leading-[0.88] tracking-tighter mb-8">
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">THE</span>
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">HASHTAG</span>
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#D02020]">STRATEGY</span>
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">ENGINE</span>
+          </h1>
+
+          <p className="font-medium text-xl text-[#121212] leading-relaxed max-w-lg mb-6">
+            Paste a caption or URL. Get a complete hashtag audit, trending recommendations, and an AI-generated content strategy — in seconds.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-8">
+            <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest px-3 py-1.5 border-2 border-[#121212] bg-white shadow-[2px_2px_0px_0px_#121212]">
+              <span className="w-2 h-2 rounded-full bg-[#D02020]" /> Instagram
+            </span>
+            {[
+              { label: 'YouTube', dot: 'bg-[#D02020]' },
+              { label: 'Facebook', dot: 'bg-[#1040C0]' },
+              { label: 'TikTok', dot: 'bg-[#121212]' },
+              { label: 'Snapchat', dot: 'bg-[#F0C020]' },
+              { label: 'X / Twitter', dot: 'bg-[#121212]' },
+            ].map((p) => (
+              <span key={p.label} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest px-3 py-1.5 border-2 border-[#121212] bg-[#F0F0F0] opacity-60">
+                <span className={`w-2 h-2 rounded-full ${p.dot} border border-[#121212]`} /> {p.label}
+                <span className="text-[8px] font-black tracking-widest text-[#D02020] border border-[#D02020] px-1">SOON</span>
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/analyze"
+              className="bg-[#D02020] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#D02020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+            >
+              Start Analysing →
+            </Link>
+            <Link
+              href="/trending"
+              className="bg-[#F0F0F0] text-[#121212] border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#E0E0E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+            >
+              See Trending →
+            </Link>
+          </div>
+        </div>
+
+        {/* Right — Blue geometric panel */}
+        <div className="lg:col-span-2 bg-[#1040C0] border-t-4 lg:border-t-0 lg:border-l-4 border-[#121212] relative overflow-hidden flex items-center justify-center min-h-[300px] dot-grid-white">
+          <div className="absolute top-[-40px] right-[-40px] w-48 h-48 rounded-full border-4 border-white opacity-10" />
+          <div className="absolute bottom-[-30px] left-[-30px] w-40 h-40 border-4 border-white opacity-10 rotate-45" />
+          <div className="relative grid grid-cols-2 gap-4 p-8">
+            {[
+              { label: 'ANALYSE', icon: '#', bg: 'bg-white', text: 'text-[#1040C0]', shadow: 'shadow-[6px_6px_0px_0px_#F0C020]' },
+              { label: 'COMPARE', icon: '≡', bg: 'bg-[#F0C020]', text: 'text-[#121212]', shadow: 'shadow-[6px_6px_0px_0px_white]' },
+              { label: 'TRENDING', icon: '↑', bg: 'bg-[#D02020]', text: 'text-white', shadow: 'shadow-[6px_6px_0px_0px_white]' },
+              { label: 'STRATEGY', icon: '★', bg: 'bg-[#121212]', text: 'text-[#F0C020]', shadow: 'shadow-[6px_6px_0px_0px_#F0C020]' },
+            ].map((card) => (
+              <div key={card.label} className={`${card.bg} ${card.shadow} border-2 border-white p-4 flex flex-col items-center gap-2`}>
+                <span className={`font-black text-3xl ${card.text}`}>{card.icon}</span>
+                <span className={`font-black text-xs uppercase tracking-widest ${card.text}`}>{card.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT YOU CAN ANALYSE ─────────────────────────────── */}
+      <section className="bg-[#F0C020] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#121212] bg-[#121212] text-white mb-4">Input Sources</span>
+              <h2 className="font-black uppercase leading-[0.9] tracking-tighter text-[#121212]">
+                <span className="block text-4xl lg:text-6xl">ANALYSE</span>
+                <span className="block text-4xl lg:text-6xl">ANYTHING</span>
+              </h2>
+            </div>
+            <p className="font-medium text-lg text-[#121212] max-w-md leading-relaxed">
+              No account needed to start. Paste a URL or type a caption — the AI does the rest.
+            </p>
+          </div>
+
+          {/* Live now */}
+          <p className="text-xs font-black uppercase tracking-widest text-[#121212] mb-3">Live Now</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-[#121212] shadow-[8px_8px_0px_0px_#121212] mb-6">
+            {[
+              { icon: '▶', title: 'Instagram Reels', desc: 'Paste any public Reel URL. Get engagement metrics and a full hashtag audit.', color: 'bg-white', iconBg: 'bg-[#D02020] text-white' },
+              { icon: '□', title: 'Posts & Carousels', desc: 'Single images and multi-slide carousels with caption and hashtag analysis.', color: 'bg-[#F0F0F0]', iconBg: 'bg-[#1040C0] text-white' },
+              { icon: 'T', title: 'Plain Caption', desc: 'No URL needed. Paste your draft caption and get a strategy before you post.', color: 'bg-white', iconBg: 'bg-[#F0C020] text-[#121212]' },
+              { icon: '◎', title: 'Instagram Account', desc: 'Connect your Business account via OAuth for strategy from your own post history.', color: 'bg-[#F0F0F0]', iconBg: 'bg-[#121212] text-white' },
+            ].map((item, i) => (
+              <div key={item.title} className={`${item.color} border-r-0 ${i < 3 ? 'sm:border-r-2' : ''} border-b-2 sm:border-b-0 border-[#121212] p-6 flex flex-col gap-4`}>
+                <div className={`w-12 h-12 ${item.iconBg} border-2 border-[#121212] flex items-center justify-center font-black text-xl shadow-[3px_3px_0px_0px_#121212]`}>
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="font-black text-base uppercase tracking-wide text-[#121212] mb-2">{item.title}</p>
+                  <p className="font-medium text-sm text-[#121212]/70 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Coming soon platforms */}
+          <p className="text-xs font-black uppercase tracking-widest text-[#121212] mb-3">Coming Soon</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0 border-2 border-[#121212] border-dashed opacity-70">
+            {[
+              { icon: '▷', platform: 'YouTube', title: 'YouTube Videos & Shorts', desc: 'Analyse tags, titles, and descriptions. Get recommendations to rank in search and suggested feeds.', iconBg: 'bg-[#D02020] text-white' },
+              { icon: 'f', platform: 'Facebook', title: 'Facebook Posts & Reels', desc: 'Connect your Page to analyse performance and get strategies tailored to Facebook\'s algorithm.', iconBg: 'bg-[#1040C0] text-white' },
+              { icon: '♪', platform: 'TikTok', title: 'TikTok Videos', desc: 'Analyse sounds, hashtags, and captions on TikTok. Find what\'s trending in your niche right now.', iconBg: 'bg-[#121212] text-white' },
+              { icon: '👻', platform: 'Snapchat', title: 'Snapchat Content', desc: 'Strategy for Snapchat Spotlight and Stories. Reach younger audiences with the right content signals.', iconBg: 'bg-[#F0C020] text-[#121212]' },
+              { icon: 'X', platform: 'X / Twitter', title: 'X (Twitter) Posts', desc: 'Analyse hashtags and keywords on X. Find trending topics and optimise your posts for maximum reach.', iconBg: 'bg-[#121212] text-white' },
+            ].map((item, i) => (
+              <div key={item.platform} className={`bg-[#F0F0F0] ${i < 4 ? 'border-b-2 lg:border-b-0 lg:border-r-2' : ''} border-[#121212] p-6 flex flex-col gap-4 relative`}>
+                <div className="absolute top-3 right-3 bg-[#D02020] text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5">
+                  Soon
+                </div>
+                <div className={`w-12 h-12 ${item.iconBg} border-2 border-[#121212] flex items-center justify-center font-black text-xl`}>
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="font-black text-sm uppercase tracking-wide text-[#121212] mb-2">{item.title}</p>
+                  <p className="font-medium text-sm text-[#121212]/70 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+      <section className="bg-[#121212] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#F0C020] text-[#F0C020] mb-8">How It Works</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-[#333]">
+            {[
+              {
+                step: '01',
+                title: 'Input Your Content',
+                desc: 'Paste an Instagram URL or your caption text. Optionally describe your niche in any language — Hindi, Hinglish, or English.',
+                accent: '#D02020',
+                details: ['Reel / Post / Carousel URL', 'Raw caption text', 'Niche description (optional)'],
+              },
+              {
+                step: '02',
+                title: 'AI Analyses Everything',
+                desc: 'Claude detects your niche, audits every hashtag for relevance and reach, pulls real trending data from Instagram, and compares against top performers.',
+                accent: '#F0C020',
+                details: ['Niche auto-detection', 'Hashtag relevance audit', 'Live Apify data scrape'],
+              },
+              {
+                step: '03',
+                title: 'Get Your Strategy',
+                desc: 'Receive a tiered hashtag set (high reach / niche / low competition), issues to fix, and a plain-English strategy verdict tailored to your account size.',
+                accent: '#1040C0',
+                details: ['20–30 recommended tags', 'Issues + fixes', 'Strategy explanation'],
+              },
+            ].map((item, i) => (
+              <div key={item.step} className={`border-b-2 md:border-b-0 ${i < 2 ? 'md:border-r-2' : ''} border-[#333] p-8`}>
+                <div
+                  className="w-14 h-14 border-4 border-white flex items-center justify-center mb-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
+                  style={{ backgroundColor: item.accent }}
+                >
+                  <span className="font-black text-lg text-white">{item.step}</span>
+                </div>
+                <p className="font-black text-xl uppercase tracking-tight text-white mb-3">{item.title}</p>
+                <p className="font-medium text-sm text-white/60 leading-relaxed mb-5">{item.desc}</p>
+                <ul className="space-y-2">
+                  {item.details.map((d) => (
+                    <li key={d} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.accent }} />
+                      <span className="text-xs font-bold uppercase tracking-wider text-white/50">{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── THREE TOOLS ──────────────────────────────────────── */}
+      <section className="bg-[#F0F0F0] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#121212] bg-[#121212] text-white mb-4">Three Tools. One Platform.</span>
+            <h2 className="font-black uppercase leading-[0.9] tracking-tighter text-[#121212] text-4xl lg:text-6xl">
+              EVERYTHING YOUR<br />CONTENT NEEDS
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                href: '/analyze',
+                label: 'Analyse',
+                headline: 'HASHTAG AUDIT + STRATEGY',
+                desc: 'Deep-dive audit of any Instagram post. Finds what hashtags are working, what\'s dead weight, and builds a custom 25-tag strategy for your niche and account size.',
+                cta: 'Start Analysing',
+                bg: 'bg-[#D02020]',
+                shadow: 'shadow-[8px_8px_0px_0px_#121212]',
+                textColor: 'text-white',
+                btnBg: 'bg-white text-[#D02020]',
+                corner: 'bg-[#F0C020]',
+              },
+              {
+                href: '/compare',
+                label: 'Compare',
+                headline: 'POST PERFORMANCE COMPARISON',
+                desc: 'Compare 2–10 Instagram posts side by side. Discover which hashtag combos drive the most views, and get per-post recommendations to fix underperformers.',
+                cta: 'Compare Posts',
+                bg: 'bg-[#1040C0]',
+                shadow: 'shadow-[8px_8px_0px_0px_#121212]',
+                textColor: 'text-white',
+                btnBg: 'bg-white text-[#1040C0]',
+                corner: 'bg-[#D02020]',
+              },
+              {
+                href: '/trending',
+                label: 'Trending',
+                headline: 'LIVE TREND INTELLIGENCE',
+                desc: 'Real-time hashtag trends pulled from Instagram\'s live feed. AI classifies what\'s rising, what\'s in the sweet spot, and what\'s already saturated — for your exact niche.',
+                cta: 'See Trends',
+                bg: 'bg-[#F0C020]',
+                shadow: 'shadow-[8px_8px_0px_0px_#121212]',
+                textColor: 'text-[#121212]',
+                btnBg: 'bg-[#121212] text-white',
+                corner: 'bg-[#1040C0]',
+              },
+            ].map((tool) => (
+              <div key={tool.label} className={`${tool.bg} ${tool.shadow} border-2 border-[#121212] p-6 lg:p-8 flex flex-col relative`}>
+                <div className={`absolute top-0 right-0 w-8 h-8 ${tool.corner} border-l-2 border-b-2 border-[#121212]`} />
+                <span className={`inline-block text-xs font-black uppercase tracking-widest px-2 py-1 border-2 border-current ${tool.textColor} mb-4 w-fit`}>
+                  {tool.label}
+                </span>
+                <p className={`font-black text-lg uppercase tracking-tight ${tool.textColor} mb-3 leading-tight`}>{tool.headline}</p>
+                <p className={`font-medium text-sm leading-relaxed mb-8 flex-1 ${tool.textColor} opacity-80`}>{tool.desc}</p>
+                <Link
+                  href={tool.href}
+                  className={`${tool.btnBg} border-2 border-[#121212] shadow-[3px_3px_0px_0px_#121212] px-5 py-3 font-black uppercase tracking-widest text-xs hover:opacity-90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all w-fit`}
+                >
+                  {tool.cta} →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── AI CAPABILITIES ──────────────────────────────────── */}
+      <section className="bg-[#D02020] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-white text-white mb-6">Powered by Claude AI</span>
+              <h2 className="font-black uppercase leading-[0.9] tracking-tighter text-white text-4xl lg:text-6xl mb-6">
+                UNDERSTANDS<br />YOUR NICHE
+              </h2>
+              <p className="font-medium text-lg text-white/80 leading-relaxed max-w-lg">
+                Describe your content in any language. The AI understands Hindi, Hinglish, English, and mixed-language niches — and generates strategies that match your exact audience.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: 'Hindi', example: 'फिटनेस और योग', color: 'bg-white text-[#D02020]' },
+                { label: 'Hinglish', example: 'gym aur workout tips', color: 'bg-[#F0C020] text-[#121212]' },
+                { label: 'English', example: 'travel photography', color: 'bg-[#121212] text-white' },
+                { label: 'Mixed', example: 'comedy और entertainment', color: 'bg-[#1040C0] text-white' },
+              ].map((lang) => (
+                <div key={lang.label} className={`${lang.color} border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] p-4`}>
+                  <p className="font-black text-xs uppercase tracking-widest mb-2 opacity-60">{lang.label}</p>
+                  <p className="font-bold text-sm">&quot;{lang.example}&quot;</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTENT STRATEGY SECTION ─────────────────────────── */}
+      <section className="bg-[#F0F0F0] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#121212] bg-[#121212] text-white mb-8">What You Get</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-[#121212] shadow-[8px_8px_0px_0px_#121212]">
+            {[
+              { num: '01', title: 'Hashtag Audit', desc: 'Every hashtag you\'re using is rated: effective, too generic, irrelevant, or missing.', accent: 'bg-[#D02020]' },
+              { num: '02', title: 'Tiered Recommendations', desc: '20–30 tags split into high reach, niche targeting, and low competition tiers.', accent: 'bg-[#1040C0]' },
+              { num: '03', title: 'Trend Intelligence', desc: 'Real hashtags from Instagram\'s live feed — what\'s rising, sweet spot, and saturated.', accent: 'bg-[#F0C020]' },
+              { num: '04', title: 'Niche Detection', desc: 'AI reads your content and identifies your exact niche — no manual tagging needed.', accent: 'bg-[#121212]' },
+              { num: '05', title: 'Competitor Analysis', desc: 'Compare up to 10 posts to find which hashtag patterns drive the most views.', accent: 'bg-[#D02020]' },
+              { num: '06', title: 'Strategy Verdict', desc: 'A plain-English summary explaining exactly what to fix and why it will grow your reach.', accent: 'bg-[#1040C0]' },
+            ].map((item, i) => (
+              <div key={item.num} className={`bg-white border-r-0 border-b-2 lg:border-b-0 ${i % 3 < 2 ? 'lg:border-r-2' : ''} ${i % 2 === 0 ? 'sm:border-r-2' : ''} border-[#121212] p-6 flex gap-4`}>
+                <div className={`flex-shrink-0 w-8 h-8 ${item.accent} border-2 border-[#121212] flex items-center justify-center shadow-[2px_2px_0px_0px_#121212]`}>
+                  <span className="font-black text-xs text-white">{item.num}</span>
+                </div>
+                <div>
+                  <p className="font-black text-sm uppercase tracking-wide text-[#121212] mb-1">{item.title}</p>
+                  <p className="font-medium text-xs text-[#121212]/60 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMING SOON ─────────────────────────────────────── */}
+      <section className="bg-[#121212] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#D02020] text-[#D02020] mb-4">On The Roadmap</span>
+              <h2 className="font-black uppercase leading-[0.9] tracking-tighter text-white text-4xl lg:text-6xl">
+                MORE<br /><span className="text-[#F0C020]">COMING SOON</span>
+              </h2>
+            </div>
+            <p className="font-medium text-lg text-white/50 max-w-md leading-relaxed">
+              We're building the most complete content strategy platform for creators. Here's what's next.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: '◎',
+                title: 'Connect Your Instagram',
+                desc: 'Link your Business or Creator account. Get personalised hashtag strategy built from your actual post history and what\'s worked for you.',
+                accent: '#D02020',
+                tag: 'Account Intelligence',
+              },
+              {
+                icon: '▷',
+                title: 'YouTube Channel Analysis',
+                desc: 'Connect your YouTube channel. Analyse tags, titles, and descriptions across your videos. Get recommendations to rank in search and suggested.',
+                accent: '#D02020',
+                tag: 'YouTube',
+              },
+              {
+                icon: 'f',
+                title: 'Facebook Page Strategy',
+                desc: 'Connect your Facebook Page. Understand which post formats and hashtags drive reach on Facebook\'s algorithm in 2025.',
+                accent: '#1040C0',
+                tag: 'Facebook',
+              },
+              {
+                icon: '📊',
+                title: 'Cross-Platform Dashboard',
+                desc: 'One view across Instagram, YouTube, and Facebook. See which content performs best on which platform and why.',
+                accent: '#F0C020',
+                tag: 'Multi-Platform',
+              },
+              {
+                icon: '🤖',
+                title: 'AI Caption Generator',
+                desc: 'Beyond hashtags — generate full captions with built-in hashtag strategy for your niche, tone, and account size.',
+                accent: '#D02020',
+                tag: 'AI Writing',
+              },
+              {
+                icon: '📅',
+                title: 'Best Time to Post',
+                desc: 'AI analyses your audience activity and tells you the exact days and times to post for maximum reach — per platform.',
+                accent: '#1040C0',
+                tag: 'Scheduling Intel',
+              },
+              {
+                icon: '♪',
+                title: 'TikTok Strategy',
+                desc: 'Connect your TikTok account. Analyse sounds, hashtags, and video performance. Get a strategy for what\'s trending on For You pages right now.',
+                accent: '#121212',
+                tag: 'TikTok',
+              },
+              {
+                icon: '👻',
+                title: 'Snapchat Spotlight',
+                desc: 'Analyse your Snapchat Spotlight and Stories performance. Get content and hashtag recommendations to grow on Snapchat\'s discovery feed.',
+                accent: '#F0C020',
+                tag: 'Snapchat',
+              },
+              {
+                icon: 'X',
+                title: 'X (Twitter) Strategy',
+                desc: 'Connect your X account. Analyse hashtag and keyword performance, find trending topics, and get a posting strategy to grow your X presence.',
+                accent: '#121212',
+                tag: 'X / Twitter',
+              },
+            ].map((item) => (
+              <div key={item.title} className="border-2 border-[#333] bg-[#1C1C1C] p-6 flex flex-col gap-4 relative group hover:-translate-y-1 transition-transform duration-200">
+                <div className="flex items-start justify-between">
+                  <div
+                    className="w-11 h-11 border-2 border-[#333] flex items-center justify-center font-black text-lg"
+                    style={{ backgroundColor: item.accent }}
+                  >
+                    <span className="text-white text-base">{item.icon}</span>
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 border border-[#333] text-white/40">
+                    {item.tag}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-black text-sm uppercase tracking-wide text-white mb-2">{item.title}</p>
+                  <p className="font-medium text-xs text-white/50 leading-relaxed">{item.desc}</p>
+                </div>
+                <div className="mt-auto pt-4 border-t border-[#333]">
+                  <span className="text-xs font-black uppercase tracking-widest text-[#D02020]">Coming Soon</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ────────────────────────────────────────── */}
+      <section className="bg-[#F0C020] p-8 lg:p-20 relative overflow-hidden">
+        <div className="absolute top-[-60px] right-[-60px] w-64 h-64 rounded-full border-4 border-[#121212] opacity-10" />
+        <div className="absolute bottom-[-40px] left-[-40px] w-48 h-48 border-4 border-[#121212] opacity-10 rotate-45" />
+        <div className="max-w-7xl mx-auto relative flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div>
+            <h2 className="font-black uppercase leading-[0.88] tracking-tighter text-[#121212] text-4xl sm:text-5xl lg:text-7xl">
+              STOP GUESSING.<br />
+              <span className="text-[#D02020]">START GROWING.</span>
+            </h2>
+            <p className="font-medium text-lg text-[#121212]/70 mt-4 max-w-md leading-relaxed">
+              Every post deserves the right hashtags. Start with a URL or caption — no account needed.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+            <Link
+              href="/analyze"
+              className="bg-[#121212] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#D02020] px-10 py-5 font-black uppercase tracking-widest text-base hover:bg-[#121212]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
+            >
+              Analyse a Post →
+            </Link>
+            <Link
+              href="/trending"
+              className="bg-white text-[#121212] border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-10 py-5 font-black uppercase tracking-widest text-base hover:bg-[#F0F0F0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
+            >
+              See Trends →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  );
+}

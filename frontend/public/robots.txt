@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /pricing
+
+Disallow: /analyze
+Disallow: /compare
+Disallow: /trending
+Disallow: /auth/
+Disallow: /onboarding
+Disallow: /api/
+
+Sitemap: https://hashtagitnow.vercel.app/sitemap.xml
