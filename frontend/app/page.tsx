@@ -32,7 +32,7 @@ export default function LandingPage() {
           </p>
 
           <p className="font-medium text-xl text-[#121212] leading-relaxed max-w-lg mb-6">
-            Hooks. Captions. Hashtags — powered by live trending data. Built for Indian creators. Supports Hindi &amp; Hinglish.
+            Hooks. Captions. Hashtags — using live trending data. Built for Indian creators. Supports Hindi &amp; Hinglish.
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest px-3 py-1.5 border-2 border-[#121212] bg-white shadow-[2px_2px_0px_0px_#121212]">
@@ -315,7 +315,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-white text-white mb-6">Powered by Claude AI</span>
+              <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-white text-white mb-6">AI-Powered</span>
               <h2 className="font-black uppercase leading-[0.9] tracking-tighter text-white text-4xl lg:text-6xl mb-6">
                 UNDERSTANDS<br />YOUR NICHE
               </h2>

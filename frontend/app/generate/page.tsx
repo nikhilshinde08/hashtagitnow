@@ -206,7 +206,7 @@ export default function GeneratePage() {
             <span className="text-[#D02020]">Viral Post</span> in 10 Seconds
           </h1>
           <p className="text-white/60 font-medium text-base max-w-xl">
-            10 hooks + full captions + hashtags, powered by live trending data. Supports Hindi, Hinglish, and English niches.
+            10 hooks + full captions + hashtags, using live trending data. Supports Hindi, Hinglish, and English niches.
           </p>
         </div>
       </section>

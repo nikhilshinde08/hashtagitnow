@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     'TikTok hashtag strategy', 'YouTube hashtag tool', 'Instagram SEO',
     'reels hashtag generator', 'niche hashtag finder',
   ],
-  authors: [{ name: 'AIGenixs Labs', url: BASE_URL }],
-  creator: 'AIGenixs Labs',
+  authors: [{ name: 'HashtagItNow', url: BASE_URL }],
+  creator: 'HashtagItNow',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               url: 'https://hashtagitnow.com',
               description: 'AI-powered hashtag generator and strategy tool for Instagram, YouTube, TikTok and Indian creators.',
               offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-              author: { '@type': 'Organization', name: 'AIGenixs Labs' },
+              author: { '@type': 'Organization', name: 'HashtagItNow' },
             }),
           }}
         />
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               className="h-8 w-auto object-contain brightness-0 invert"
             />
             <p className="text-xs font-bold uppercase tracking-widest text-white/40">
-              Developed by <span className="text-[#F0C020]">AIGenixs Labs</span> © 2026
+              © 2026 HashtagItNow
             </p>
           </div>
         </footer>
