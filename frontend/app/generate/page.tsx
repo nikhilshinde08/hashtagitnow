@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { apiPost } from '@/lib/api';
 
 type Tone = 'funny' | 'educational' | 'inspirational';
@@ -164,8 +164,7 @@ export default function GeneratePage() {
   const [error, setError] = useState('');
   const [usedToday, setUsedToday] = useState(0);
 
-  // Read usage from localStorage on mount
-  useState(() => { setUsedToday(getUsageToday()); });
+  useEffect(() => { setUsedToday(getUsageToday()); }, []);
 
   const remaining = Math.max(0, DAILY_LIMIT - usedToday);
   const limitReached = remaining === 0;
