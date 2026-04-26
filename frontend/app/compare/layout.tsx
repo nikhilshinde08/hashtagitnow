@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Compare Instagram Posts — Find What Drives Views',
+  title: 'Compare Instagram Posts & Find What Drives Views',
   description: 'Compare up to 5 Instagram posts side-by-side. AI identifies which hashtags drove the most views and what to change. Perfect for Indian creators on Reels.',
   keywords: ['compare instagram posts', 'instagram post comparison tool', 'which hashtags get more views', 'instagram reels hashtag comparison', 'instagram analytics india'],
   alternates: { canonical: 'https://hashtagitnow.com/compare' },

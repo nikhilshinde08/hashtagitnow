@@ -27,9 +27,9 @@ export default function LandingPage() {
             <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-[#121212]">IN 10 SECONDS</span>
           </h1>
 
-          <p className="font-medium text-lg text-[#121212]/60 uppercase tracking-widest mb-2 text-sm">
+          <h2 className="font-medium text-lg text-[#121212]/60 uppercase tracking-widest mb-2 text-sm">
             Free AI Hashtag Generator for Instagram, YouTube &amp; TikTok
-          </p>
+          </h2>
 
           <p className="font-medium text-xl text-[#121212] leading-relaxed max-w-lg mb-6">
             Hooks. Captions. Hashtags — using live trending data. Built for Indian creators. Supports Hindi &amp; Hinglish.

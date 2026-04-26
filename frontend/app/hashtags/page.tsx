@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { NICHE_PAGES, PAGE_CATEGORIES } from '@/lib/seo-pages';
 
 export const metadata: Metadata = {
-  title: 'Instagram Hashtag Guides by Niche — HashtagItNow',
+  title: 'Instagram Hashtag Guides by Niche',
   description: 'Free Instagram hashtag guides for every niche. Fitness, food, travel, comedy, beauty, startup and more — with India-specific and Hindi creator tags. Updated 2026.',
   alternates: { canonical: 'https://hashtagitnow.com/hashtags' },
   openGraph: {
-    title: 'Instagram Hashtag Guides by Niche — HashtagItNow',
+    title: '35 Free Instagram Hashtag Guides by Niche',
     description: 'Free hashtag guides for every Instagram niche. Includes Hindi and Indian creator hashtags.',
     url: 'https://hashtagitnow.com/hashtags',
   },
