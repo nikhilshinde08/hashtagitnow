@@ -138,6 +138,23 @@ function Skeleton() {
   );
 }
 
+const DAILY_LIMIT = 3;
+
+function getUsageToday(): number {
+  if (typeof window === 'undefined') return 0;
+  const today = new Date().toDateString();
+  const stored = JSON.parse(localStorage.getItem('gen_usage') || '{}') as Record<string, number>;
+  return stored[today] ?? 0;
+}
+
+function incrementUsage(): number {
+  const today = new Date().toDateString();
+  const stored = JSON.parse(localStorage.getItem('gen_usage') || '{}') as Record<string, number>;
+  const next = (stored[today] ?? 0) + 1;
+  localStorage.setItem('gen_usage', JSON.stringify({ ...stored, [today]: next }));
+  return next;
+}
+
 export default function GeneratePage() {
   const [niche, setNiche] = useState('');
   const [tone, setTone] = useState<Tone>('inspirational');
@@ -145,16 +162,24 @@ export default function GeneratePage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<GenerateResponse | null>(null);
   const [error, setError] = useState('');
+  const [usedToday, setUsedToday] = useState(0);
+
+  // Read usage from localStorage on mount
+  useState(() => { setUsedToday(getUsageToday()); });
+
+  const remaining = Math.max(0, DAILY_LIMIT - usedToday);
+  const limitReached = remaining === 0;
 
   async function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
-    if (!niche.trim()) return;
+    if (!niche.trim() || limitReached) return;
     setLoading(true);
     setError('');
     setResult(null);
     try {
       const data = await apiPost<GenerateResponse>('/generate', { niche: niche.trim(), tone, platform });
       setResult(data);
+      setUsedToday(incrementUsage());
     } catch (err) {
       setError((err as Error).message || 'Something went wrong.');
     } finally {
@@ -253,17 +278,48 @@ export default function GeneratePage() {
             </div>
           </div>
 
+          {/* Usage counter */}
+          <div className="flex items-center justify-between border-2 border-[#121212] px-4 py-3 bg-white shadow-[3px_3px_0px_0px_#121212]">
+            <div className="flex items-center gap-2">
+              {Array.from({ length: DAILY_LIMIT }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-4 h-4 border-2 border-[#121212] ${i < usedToday ? 'bg-[#D02020]' : 'bg-[#F0F0F0]'}`}
+                />
+              ))}
+              <span className="text-xs font-black uppercase tracking-widest text-[#121212]/60 ml-2">
+                {remaining} free generation{remaining !== 1 ? 's' : ''} left today
+              </span>
+            </div>
+            <a href="/pricing" className="text-xs font-black uppercase tracking-widest text-[#1040C0] hover:underline">
+              Go Pro →
+            </a>
+          </div>
+
           {error && (
             <p className="text-xs font-bold text-[#D02020] border-2 border-[#D02020] px-3 py-2">{error}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={loading || !niche.trim()}
-            className="w-full bg-[#D02020] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-6 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#D02020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all disabled:opacity-50"
-          >
-            {loading ? 'Generating 10 Hooks…' : 'Generate Hooks →'}
-          </button>
+          {limitReached ? (
+            <div className="bg-[#121212] border-2 border-[#121212] shadow-[4px_4px_0px_0px_#D02020] p-6 text-center">
+              <p className="font-black text-white uppercase tracking-tight text-lg mb-2">Daily Limit Reached</p>
+              <p className="text-white/60 font-medium text-sm mb-4">You&apos;ve used all 3 free generations for today. Resets at midnight.</p>
+              <a
+                href="/pricing"
+                className="inline-flex items-center gap-2 bg-[#D02020] text-white border-2 border-white px-6 py-3 font-black uppercase tracking-widest text-sm hover:bg-[#D02020]/90 transition-all"
+              >
+                Upgrade for Unlimited →
+              </a>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              disabled={loading || !niche.trim()}
+              className="w-full bg-[#D02020] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-6 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#D02020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all disabled:opacity-50"
+            >
+              {loading ? 'Generating 10 Hooks…' : `Generate Hooks → (${remaining} left)`}
+            </button>
+          )}
         </form>
 
         {/* ── RESULTS ──────────────────────────────────────────── */}

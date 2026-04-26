@@ -21,15 +21,18 @@ export default function LandingPage() {
             </span>
           </div>
 
-          <h1 className="font-black uppercase leading-[0.88] tracking-tighter mb-8">
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">THE</span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">HASHTAG</span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#D02020]">STRATEGY</span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] text-[#121212]">ENGINE</span>
+          <h1 className="font-black uppercase leading-[0.88] tracking-tighter mb-6">
+            <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-[#121212]">GET YOUR NEXT</span>
+            <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-[#D02020]">VIRAL POST</span>
+            <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-[#121212]">IN 10 SECONDS</span>
           </h1>
 
+          <p className="font-medium text-lg text-[#121212]/60 uppercase tracking-widest mb-2 text-sm">
+            Free AI Hashtag Generator for Instagram, YouTube &amp; TikTok
+          </p>
+
           <p className="font-medium text-xl text-[#121212] leading-relaxed max-w-lg mb-6">
-            Paste a caption or URL. Get a complete hashtag audit, trending recommendations, and an AI-generated content strategy — in seconds.
+            Hooks. Captions. Hashtags — powered by live trending data. Built for Indian creators. Supports Hindi &amp; Hinglish.
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest px-3 py-1.5 border-2 border-[#121212] bg-white shadow-[2px_2px_0px_0px_#121212]">
@@ -51,16 +54,16 @@ export default function LandingPage() {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/analyze"
+              href="/generate"
               className="bg-[#D02020] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#D02020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
             >
-              Start Analysing →
+              Generate Hooks Free →
             </Link>
             <Link
-              href="/trending"
+              href="/analyze"
               className="bg-[#F0F0F0] text-[#121212] border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-[#E0E0E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
             >
-              See Trending →
+              Analyse a Post →
             </Link>
           </div>
         </div>
@@ -463,6 +466,89 @@ export default function LandingPage() {
                 </div>
                 <div className="mt-auto pt-4 border-t border-[#333]">
                   <span className="text-xs font-black uppercase tracking-widest text-[#D02020]">Coming Soon</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── EDUCATIONAL: WHAT IS A HASHTAG GENERATOR ────────── */}
+      <section className="bg-white border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-4xl mx-auto">
+          <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#121212] bg-[#F0C020] text-[#121212] mb-6 shadow-[2px_2px_0px_0px_#121212]">Learn</span>
+          <h2 className="font-black text-3xl lg:text-4xl uppercase tracking-tighter text-[#121212] mb-8">
+            What is an AI Hashtag Generator?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <p className="font-medium text-[#121212]/70 leading-relaxed mb-4">
+                A <strong className="text-[#121212]">hashtag generator</strong> is a tool that suggests relevant hashtags for your social media posts. Unlike generic hashtag tools, an <strong className="text-[#121212]">AI hashtag generator</strong> understands your specific content, niche, and audience — then recommends hashtags that actually drive reach.
+              </p>
+              <p className="font-medium text-[#121212]/70 leading-relaxed mb-4">
+                HashtagItNow goes further: it pulls <strong className="text-[#121212]">live trending data</strong> from Instagram before generating recommendations. So instead of recycled tag lists, you get hashtags that are performing right now — for your exact niche.
+              </p>
+              <p className="font-medium text-[#121212]/70 leading-relaxed">
+                For <strong className="text-[#121212]">Indian creators</strong>, we support Hindi, Hinglish, and English input. Describe your niche in any language — our AI understands it all.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {[
+                { title: 'Instagram Hashtag Generator', desc: 'Get 5 perfectly targeted hashtags for any Instagram post, Reel or caption. Includes trending + niche + low-competition tiers.' },
+                { title: 'YouTube Hashtag Generator', desc: 'Generate hashtags and hook ideas that improve YouTube search visibility and suggested video placement.' },
+                { title: 'Hindi Hashtag Generator', desc: 'The only AI hashtag tool that understands Hinglish and Hindi niches. Built for Indian creators from day one.' },
+                { title: 'Trending Hashtag Finder', desc: 'See what\'s rising, what\'s saturated, and what\'s in the sweet spot — for your specific niche, updated daily.' },
+              ].map((item) => (
+                <div key={item.title} className="border-2 border-[#121212] shadow-[3px_3px_0px_0px_#121212] p-4 bg-[#F0F0F0]">
+                  <p className="font-black text-sm text-[#121212] mb-1">{item.title}</p>
+                  <p className="text-xs font-medium text-[#121212]/60 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────── */}
+      <section className="bg-[#F0F0F0] border-b-4 border-[#121212] p-8 lg:p-16">
+        <div className="max-w-4xl mx-auto">
+          <span className="inline-block text-xs font-black uppercase tracking-widest px-3 py-1 border-2 border-[#121212] bg-[#121212] text-white mb-6 shadow-[2px_2px_0px_0px_#121212]">FAQ</span>
+          <h2 className="font-black text-3xl lg:text-4xl uppercase tracking-tighter text-[#121212] mb-8">
+            Hashtag Generator — Common Questions
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: 'How many hashtags should I use on Instagram in 2026?',
+                a: 'Instagram officially recommends 3–5 hashtags in 2026. Using 20–30 hashtags no longer increases reach and can suppress distribution. HashtagItNow recommends exactly 5 targeted hashtags — one broad, two niche, two low-competition.',
+              },
+              {
+                q: 'Is this hashtag generator free?',
+                a: 'Yes. You get 3 free AI generations per day — including hooks, captions, and hashtags. Free accounts also get full access to the hashtag analyser, post comparator, and trending hashtag finder.',
+              },
+              {
+                q: 'Does this work for Hindi and Hinglish creators?',
+                a: 'Yes — this is our biggest differentiator. You can describe your niche in Hindi, Hinglish, or English and the AI understands it perfectly. We specifically built for Indian creators who are underserved by Western tools.',
+              },
+              {
+                q: 'What makes this better than other hashtag generators?',
+                a: 'Three things: (1) Live trending data — we pull real Instagram hashtag frequency before generating, so recommendations reflect what\'s working now, not last year. (2) Indian niche support — Hindi and Hinglish understanding. (3) Full content strategy — not just hashtags, but hooks and captions too.',
+              },
+              {
+                q: 'Can I use this for YouTube hashtags?',
+                a: 'Yes. Select YouTube as your platform and the generator optimises for YouTube search visibility and suggested video placement. YouTube hashtags work differently from Instagram — our AI accounts for that.',
+              },
+              {
+                q: 'What is the best hashtag generator for Instagram in India?',
+                a: 'HashtagItNow is built specifically for Indian creators — it understands Hindi, Hinglish, regional niches, Bollywood references, and desi content culture. No other hashtag tool does this.',
+              },
+            ].map((faq, i) => (
+              <div key={i} className="border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] bg-white">
+                <div className="border-b-2 border-[#121212] px-6 py-4">
+                  <h3 className="font-black text-sm text-[#121212] uppercase tracking-tight">{faq.q}</h3>
+                </div>
+                <div className="px-6 py-4">
+                  <p className="text-sm font-medium text-[#121212]/70 leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             ))}

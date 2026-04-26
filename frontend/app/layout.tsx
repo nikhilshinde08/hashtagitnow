@@ -9,10 +9,10 @@ const BASE_URL = 'https://hashtagitnow.com';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'HashtagItNow — AI Hashtag Strategy Tool for Instagram, YouTube & TikTok',
+    default: 'Free AI Hashtag Generator — Instagram, YouTube & TikTok | HashtagItNow',
     template: '%s | HashtagItNow',
   },
-  description: 'AI-powered hashtag generator and strategy tool. Analyse Instagram posts, find trending hashtags, compare content performance, and grow your reach on Instagram, YouTube, TikTok and Facebook.',
+  description: 'Free AI hashtag generator for Instagram, YouTube, TikTok and more. Get trending hashtags, hook ideas, captions and strategy in seconds. Best hashtag generator for Indian creators — supports Hindi & Hinglish.',
   keywords: [
     'hashtag generator', 'Instagram hashtag strategy', 'AI hashtag tool',
     'trending hashtags 2026', 'hashtag analyzer', 'Instagram growth tool',
@@ -65,6 +65,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                { '@type': 'Question', name: 'How many hashtags should I use on Instagram in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Instagram recommends 3–5 hashtags in 2026. Using more does not increase reach. HashtagItNow recommends exactly 5 targeted hashtags per post.' } },
+                { '@type': 'Question', name: 'Is HashtagItNow free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Free users get 3 AI generations per day plus full access to the hashtag analyser, comparator, and trending finder.' } },
+                { '@type': 'Question', name: 'Does this work for Hindi and Hinglish creators?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — HashtagItNow understands Hindi, Hinglish, and English niches. It is built specifically for Indian creators.' } },
+                { '@type': 'Question', name: 'What is the best hashtag generator for Instagram in India?', acceptedAnswer: { '@type': 'Answer', text: 'HashtagItNow is built for Indian creators with Hindi and Hinglish support, live trending data, and AI-powered hooks and captions.' } },
+              ],
+            }),
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
