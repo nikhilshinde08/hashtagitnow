@@ -29,11 +29,14 @@ function getClient(): AnthropicFoundry {
 
 // ─── Core LLM call ────────────────────────────────────────────────────────
 
-async function callLLM(system: string, userPrompt: string, maxTokens = 900): Promise<string> {
+async function callLLM(system: string, userPrompt: string, maxTokens = 900, timeoutMs?: number): Promise<string> {
   const client = getClient();
 
+  // Generate endpoint requests 4000 tokens — give it 60s instead of the global 20s
+  const effectiveTimeout = timeoutMs ?? (maxTokens > 1500 ? 60_000 : config.llm.timeoutMs);
+
   const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error('LLM_TIMEOUT')), config.llm.timeoutMs),
+    setTimeout(() => reject(new Error('LLM_TIMEOUT')), effectiveTimeout),
   );
 
   const response = await Promise.race([
