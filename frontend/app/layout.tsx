@@ -109,7 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
             <p className="text-xs font-bold uppercase tracking-widest text-white/40">
               Developed by{' '}
-              <a href="https://aigenixs.com" target="_blank" rel="noopener noreferrer" className="text-[#F0C020] hover:underline">
+              <a href="https://www.aigenixs.com" target="_blank" rel="noopener noreferrer" className="text-[#F0C020] hover:underline">
                 AIGenixs
               </a>{' '}
               © 2026
